@@ -38,19 +38,19 @@ module.exports = (grunt) ->
       options:
         separator: ';'
       build:
-        src: ['src/js/lib/*.js', 'src/js/*.js']
+        src: ['src/js/lib/*.js', 'src/js/build/*.js']
         dest: 'src/js/<%= pkg.name %>.min.js'
     uglify:
       options:
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       build:
-        files: 'public/js/<%= pkg.name %>.min.js' : ['public/src/js/<%= pkg.name %>.min.js']
+        files: 'public/js/<%= pkg.name %>.min.js' : ['src/js/<%= pkg.name %>.min.js']
     less:
       build:
         files:
           "public/css/<%= pkg.name %>.css": ["src/less/<%= pkg.name %>.less"]
     watch:
-      files: ['<%= coffee.glob_to_multiple.src %>', 'public/less/*.less']
+      files: ['<%= coffee.glob_to_multiple.src %>', 'src/less/*.less']
       tasks: ['coffee', 'concat', 'uglify', 'less']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
