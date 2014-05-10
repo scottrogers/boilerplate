@@ -40,6 +40,9 @@ module.exports = (grunt) ->
       build:
         src: ['src/js/lib/*.js', 'src/js/build/*.js']
         dest: 'src/js/<%= pkg.name %>.min.js'
+      dev:
+        src: ['src/js/lib/*.js', 'src/js/build/*.js']
+        dest: 'public/js/<%= pkg.name %>.min.js'
     uglify:
       options:
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -59,5 +62,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
-  grunt.registerTask 'default', ['coffee', 'concat', 'uglify', 'less', 'watch']
-  grunt.registerTask 'build', ['coffee', 'concat', 'uglify', 'less']
+  grunt.registerTask 'default', ['coffee', 'concat:dev', 'less', 'watch']
+  grunt.registerTask 'build', ['coffee', 'concat:build', 'uglify', 'less']
