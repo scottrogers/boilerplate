@@ -5,6 +5,7 @@
 
 App = {}
 App.Base = {}
+App.Requests = {}
 App.Base.View = {}
 
 
