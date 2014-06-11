@@ -54,7 +54,7 @@ module.exports = (grunt) ->
           "public/css/<%= pkg.name %>.css": ["src/less/<%= pkg.name %>.less"]
     watch:
       files: ['<%= coffee.glob_to_multiple.src %>', 'src/less/*.less']
-      tasks: ['coffee', 'concat', 'uglify', 'less']
+      tasks: ['coffee', 'concat:dev', 'less']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-concat'
